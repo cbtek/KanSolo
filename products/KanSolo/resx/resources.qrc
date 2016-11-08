@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>imgPriorityHigh.png</file>
+        <file>imgPriorityLow.png</file>
+        <file>imgPriorityNormal.png</file>
+        <file>imgScoreQuestion.png</file>
+        <file>imgScoreInf.png</file>
+        <file>imgScoreHalf.png</file>
+        <file>imgScore100.png</file>
+        <file>imgScore40.png</file>
+        <file>imgScore20.png</file>
+        <file>imgScore13.png</file>
+        <file>imgScore8.png</file>
+        <file>imgScore5.png</file>
+        <file>imgScore3.png</file>
+        <file>imgScore2.png</file>
+        <file>imgScore1.png</file>
+        <file>imgNew.png</file>
+        <file>imgEdit.png</file>
+        <file>imgDelete.png</file>
+        <file>imgOk.png</file>
+        <file>imgPrimaryLogo.png</file>
+    </qresource>
+</RCC>
