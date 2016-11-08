@@ -5,6 +5,7 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(KanSolo)
 
+add_definitions(-std=c++11)
 if (WIN32)
     if (MSVC)
 
