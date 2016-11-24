@@ -3,15 +3,9 @@
 #==============================================================================
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CURR_TARGET cbtek_kan_solo)
-if (WIN32)
-    if (MINGW)
-        add_definitions(-std=c++11)
-    endif()
-else()
-    if (GCC)
-        add_definitions(-std=c++11)
-    endif()
-endif()
+
+include(${CMAKE_MODULE_PATH}/flags.cmake)
+
 set(CURR_TARGET_SOURCES "${CURR_TARGET}_SOURCES")
 set(CURR_TARGET_FORMS "${CURR_TARGET}_FORMS")
 set(CURR_TARGET_HEADERS "${CURR_TARGET}_HEADERS")
@@ -80,3 +74,9 @@ else()
                         pthread
                         ${OPENGL_LIBRARIES})
 endif()
+
+# Copy themes folder to build directory
+# so that the exe can see them
+add_custom_command(TARGET ${CURR_TARGET} POST_BUILD
+               COMMAND ${CMAKE_COMMAND} -E copy_directory
+                   ${CMAKE_CURRENT_SOURCE_DIR}/resx/themes $<TARGET_FILE_DIR:${CURR_TARGET}>/themes)

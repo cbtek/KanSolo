@@ -9,15 +9,8 @@ set(CURR_TARGET_HEADERS "${CURR_TARGET}_HEADERS")
 set(CURR_TARGET_CONTRIB_SOURCES "${CURR_TARGET}_CONTRIB_SOURCES")
 set(CURR_TARGET_CONTRIB_HEADERS "${CURR_TARGET}_CONTRIB_HEADERS")
 
-if (WIN32)
-    if (MINGW)
-        add_definitions(-std=c++11)
-    endif()
-else()
-    if (GCC)
-        add_definitions(-std=c++11)
-    endif()
-endif()
+include(${CMAKE_MODULE_PATH}/flags.cmake)
+
 #==============================================================================
 # Include Source Files
 #==============================================================================
