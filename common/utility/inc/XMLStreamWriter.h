@@ -73,11 +73,18 @@ class XMLStreamWriter
     void writeTextElement(const std::string & tag, const std::string & text);    
 
     /**
+     * @brief writeData
+     * @param data
+     */
+    void writeData(const std::string & data);
+
+    /**
      * @brief writeAttribute
      * @param attributeName
      * @param attributeValue
+     * @param closeTag
      */
-    void writeAttribute(const std::string & attributeName, const std::string & attributeValue);    
+    void writeAttribute(const std::string & attributeName, const std::string & attributeValue, bool closeTag=false);
 	//! Destructor
 	~XMLStreamWriter();	
 

@@ -30,7 +30,8 @@ namespace common {
 namespace utility {
 namespace DateUtils {
 
-static inline std::string toShortDateString(const DateEntity &date, const std::string &format)
+static inline std::string toShortDateString(const DateEntity &date,
+                                            const std::string &format="mm-dd-yyyy")
 {
     std::string dateStr=format;
 
