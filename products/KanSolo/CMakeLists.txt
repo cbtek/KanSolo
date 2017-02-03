@@ -21,7 +21,6 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 find_package(Qt5Widgets REQUIRED)
-find_package(OpenGL REQUIRED)
 
 #==============================================================================
 # Include Source Files
@@ -60,19 +59,15 @@ if (WIN32)
     target_link_libraries(${CURR_TARGET}
                           common_database
                           common_utils
-                          Qt5::Widgets
-                          Qt5::OpenGL
-                          ${PTHREAD_LIB}
-                          ${OPENGL_LIBRARIES})
+                          Qt5::Widgets                          
+                          ${PTHREAD_LIB})
 else()
     target_link_libraries(${CURR_TARGET}
                         common_database
                         common_utils
-                        Qt5::Widgets
-                        Qt5::OpenGL
+                        Qt5::Widgets                        
                         dl
-                        pthread
-                        ${OPENGL_LIBRARIES})
+                        pthread)
 endif()
 
 # Copy themes folder to build directory
