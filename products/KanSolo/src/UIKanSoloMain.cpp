@@ -371,8 +371,7 @@ void UIKanSoloMain::onSelectBoard(int index)
 }
 
 void UIKanSoloMain::onSelectTheme(int index)
-{
-    std::cerr << "theme: "<<index << std::endl;
+{    
     if (index >=0 && index <m_currentThemes.size())
     {
         KanSoloTheme theme = m_currentThemes[index];
