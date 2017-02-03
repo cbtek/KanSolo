@@ -48,6 +48,9 @@ UIKanSoloMain::UIKanSoloMain(QWidget *parent) :
     m_ui(new Ui_UIKanSoloMain)
 {    
     m_ui->setupUi(this);
+    size_t themeIndex = KanSoloProjectManager::inst().getDefaultThemeIndex();
+    size_t boardIndex = KanSoloProjectManager::inst().getDefaultBoardIndex();
+
     m_toggleFullScreen=false;
     connect(m_ui->m_btnNewBoard,SIGNAL(clicked(bool)),this,SLOT(onCreateBoard()));    
     connect(m_ui->m_btnNewTask,SIGNAL(clicked(bool)),this,SLOT(onCreateTask()));
@@ -80,24 +83,25 @@ UIKanSoloMain::UIKanSoloMain(QWidget *parent) :
             }
         }
     }
+
     onPopulateBoardList();
 
     //Auto populate last combo box selections
     try
-    {
-        size_t boardIndex = KanSoloProjectManager::inst().getDefaultBoardIndex();
+    {                
         if (boardIndex>=0 && boardIndex < m_ui->m_cmbBoards->count())
-        {
+        {            
+            m_ui->m_cmbBoards->setCurrentIndex(boardIndex);
             onSelectBoard(boardIndex);
         }
     }
     catch(std::exception & ){}
 
     try
-    {
-        size_t themeIndex = KanSoloProjectManager::inst().getDefaultThemeIndex();
+    {                
         if (themeIndex >=0 && themeIndex < m_ui->m_cmbThemes->count())
-        {
+        {            
+            m_ui->m_cmbThemes->setCurrentIndex(themeIndex);
             onSelectTheme(themeIndex);
         }
 
@@ -368,7 +372,7 @@ void UIKanSoloMain::onSelectBoard(int index)
 
 void UIKanSoloMain::onSelectTheme(int index)
 {
-
+    std::cerr << "theme: "<<index << std::endl;
     if (index >=0 && index <m_currentThemes.size())
     {
         KanSoloTheme theme = m_currentThemes[index];

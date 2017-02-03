@@ -384,17 +384,18 @@ size_t KanSoloProjectManager::getDefaultThemeIndex() const
 
     std::string query = "SELECT @defTheme FROM @table WHERE @name = @user;";
     query = qb.buildQuery(query);
-    QueryResultPtr results = m_connection->query(query);
+    QueryResultPtr results = m_connection->query(query);    
     qb.clean(idBeg);
     qb.clean(idEnd);
     qb.clean(litBeg);
     qb.clean(litEnd);
+
     if (results->isValid())
     {
         int count = results->getNumResultRows();
         for (size_t a1 = 0;a1 < count; ++a1)
         {
-            ResultDataRow dataRow = results->getResultRow(a1);
+            ResultDataRow dataRow = results->getResultRow(a1);            
             return dataRow.getInteger(qb["@defTheme"]);
         }
     }
@@ -552,7 +553,9 @@ void KanSoloProjectManager::openDatabase(const std::string &filePath, bool purge
         qb["@defBoard"]=idBeg+ "default_board"+idEnd;
         qb["@defTheme"]=idBeg+ "default_theme"+idEnd;
         query ="CREATE TABLE IF NOT EXISTS ";
-        query += "@table (@name TEXT,@defBoardIndex INTEGER,@defThemeIndex INTEGER);";
+        query += "@table (@name TEXT,@defBoard INTEGER,@defTheme INTEGER);";
+        query = qb.buildQuery(query);
+        m_connection->query(query);
     }
 }
 
